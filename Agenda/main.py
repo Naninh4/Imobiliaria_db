@@ -8,6 +8,7 @@ while(True):
         print("2. Atualizar")
         print("3. Excluir")
         print("4. Listar")
+        print("5. Sair")
 
         opcao = int(input("Digite a opção desejada: "))
         
@@ -22,7 +23,7 @@ while(True):
                 conn.close()
             input()
 
-        if opcao == 2:
+        elif opcao == 2:
             conn = Conexao().conexao()
             Conexao.listar_contatos(conn)
             id = int(input("\nDigite o id do contato que quer alterar: "))
@@ -32,21 +33,31 @@ while(True):
             contato = Contato(id,nome,telefone,endereco)
 
             if conn:
-                Conexao.alterar_contato(conn,contato)
+                Conexao.alterar_contato(conn, contato)
+                Conexao.select_contato_by_id(conn, id)
                 conn.close()
+
             input()
 
-        if opcao == 3:
+        elif opcao == 3:
             conn = Conexao().conexao()
-            id = int(input("Digite o id do contato: "))
+            Conexao.listar_contatos(conn)
+            id = int(input("\nDigite o id do contato: "))
             if conn:
                 Conexao.remover_contato(conn, id)
                 conn.close()
             input()
 
-        if opcao == 4:
+        elif opcao == 4:
             conn = Conexao().conexao()
             if conn:
                 Conexao.listar_contatos(conn)
                 conn.close()
             input()
+            
+        elif opcao == 5:
+            print("Saindo do programa.")
+            break
+
+        else:
+            print("Opção inválida. Tente novamente.")

@@ -8,7 +8,7 @@ class Conexao():
     def conexao(self):
             try:
                 conn = psycopg2.connect(
-                    dbname="Agenda",
+                    dbname="postgres",
                     user="postgres",
                     password="postgres",
                     host="localhost",
@@ -93,9 +93,8 @@ class Conexao():
                 cursor.execute(query)
                 conn.commit()
                 print("Objeto alterado!")  
-                # super.select_contato_by_id(conn, cont.id);           
         except Exception as e:
-                print(f"Erro ao remover o objeto: {e}")
+                print(f"Erro ao selecionar  o objeto: {e}")
     
     
     def listar_contatos(conn):
