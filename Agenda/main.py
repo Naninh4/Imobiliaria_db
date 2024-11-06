@@ -21,3 +21,32 @@ while(True):
                 Conexao.insert_contato(conn, contato)
                 conn.close()
             input()
+
+        if opcao == 2:
+            conn = Conexao().conexao()
+            Conexao.listar_contatos(conn)
+            id = int(input("\nDigite o id do contato que quer alterar: "))
+            nome = input("Digite o nome do contato: ")
+            telefone = input("Digite o telefone do contato: ")
+            endereco = input("Digite o endereco do contato: ")
+            contato = Contato(id,nome,telefone,endereco)
+
+            if conn:
+                Conexao.alterar_contato(conn,contato)
+                conn.close()
+            input()
+
+        if opcao == 3:
+            conn = Conexao().conexao()
+            id = int(input("Digite o id do contato: "))
+            if conn:
+                Conexao.remover_contato(conn, id)
+                conn.close()
+            input()
+
+        if opcao == 4:
+            conn = Conexao().conexao()
+            if conn:
+                Conexao.listar_contatos(conn)
+                conn.close()
+            input()
